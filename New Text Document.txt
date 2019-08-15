@@ -1,0 +1,28 @@
+3v3 -vcc
+
+5v - 255,255,3
+Vsens = 0.833
+
+
+R1=11k
+R2=2.2k
+(x5 divider)
+R1=5kohm
+R2=330ohm
+(x15.15 divider)
+
+
+
+Vsens = (R2*Vout)/(R1+R2)
+Vout = (Vsens*(R1+R2))/R1
+Vsens = (Vcc/1023)*SensValue 
+SensValue = Vsens / (Vcc/1023)
+
+Vout = (((VCC/1023)*SensValue)*(R1+R2))/R2
+SensValue((R2*Vout)/(R1+R2)) / (VCC /1023)
+
+Vmax = VCC*((R1+R2)/R2);
+Rfactor = R1/R2;
+Vmax = VCC*Rfactor;
+
+Rfactor = Vmax/Vcc
