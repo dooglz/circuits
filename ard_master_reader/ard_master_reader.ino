@@ -52,11 +52,23 @@ void loop() {
   const float R1 = 4870.0;
   const float R2 = 327.0;
   const float Vout = (((VCC / 1023) * out[1]) * (R1 + R2)) / R2;
+
+  const uint16_t VReq = out[0];
+  const uint16_t Vactual= out[1];
+  const uint16_t target= out[2];
+  const uint16_t pwmval= out[3];
+  const uint16_t pwmSafetyRestTime= out[4];
+Serial.print(VReq);Serial.print(", ");
+Serial.print(Vactual);Serial.print(", ");
+Serial.print(pwmval);Serial.print(", ");
+ Serial.print(Vout); Serial.println("V)");
+  /*
   Serial.print(out[0]); Serial.print(", ");
   Serial.print(out[1]); Serial.print(",");
   Serial.print(out[2]); Serial.print(", ");
   Serial.print(out[3]); Serial.print(",");
   Serial.print(out[4]); Serial.print(", (");
   Serial.print(Vout); Serial.println("V)");
-  delay(1000);
+  */
+  delay(100);
 }
