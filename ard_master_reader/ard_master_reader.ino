@@ -18,7 +18,7 @@ void setup() {
   Serial.print("Hello");
 }
 
-const size_t bufLength = 5 * sizeof(int);
+const size_t bufLength = 4 * sizeof(int);
 
 void loop() {
 
@@ -41,7 +41,7 @@ void loop() {
   }
 
   Wire.requestFrom(8, bufLength);  //from slave device #8
-  int out[5] = { -1, -1, -1, -1, -1};
+  int out[5] = { -1, -1, -1, -1 };
   char* idx = (char*)(&out[0]);
   while (Wire.available() && idx < ((char*)(&out[0]) + ((char)bufLength))) { // slave may send less than requested
     char a = Wire.read();
@@ -57,8 +57,8 @@ void loop() {
   const uint16_t Vactual= out[1];
   const uint16_t target= out[2];
   const uint16_t pwmval= out[3];
-  const uint16_t pwmSafetyRestTime= out[4];
-Serial.print(VReq);Serial.print(", ");
+Serial.print(VReq);Serial.print(",");
+Serial.print(target);Serial.print(", ");
 Serial.print(Vactual);Serial.print(", ");
 Serial.print(pwmval);Serial.print(", ");
  Serial.print(Vout); Serial.println("V)");
@@ -70,5 +70,5 @@ Serial.print(pwmval);Serial.print(", ");
   Serial.print(out[4]); Serial.print(", (");
   Serial.print(Vout); Serial.println("V)");
   */
-  delay(100);
+  delay(800);
 }
