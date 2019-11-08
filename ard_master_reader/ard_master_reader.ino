@@ -11,7 +11,7 @@
 
 
 #include <Wire.h>
-
+const bool dbgMode = true;
 void setup() {
   Wire.begin();        // join i2c bus (address optional for master)
   Serial.begin(9600);  // start serial for output
@@ -57,11 +57,20 @@ void loop() {
   const uint16_t Vactual= out[1];
   const uint16_t target= out[2];
   const uint16_t pwmval= out[3];
-Serial.print(VReq);Serial.print(",");
-Serial.print(target);Serial.print(", ");
-Serial.print(Vactual);Serial.print(", ");
-Serial.print(pwmval);Serial.print(", ");
- Serial.print(Vout); Serial.println("V)");
+  if(dbgMode){
+    Serial.print(VReq);Serial.print(",");
+    Serial.print(Vactual);Serial.print(",");
+    Serial.print(target);Serial.print(",");
+    Serial.print(pwmval);
+    Serial.println(""); 
+  }else{
+    Serial.print(VReq);Serial.print(",");
+    Serial.print(target);Serial.print(", ");
+    Serial.print(Vactual);Serial.print(", ");
+    Serial.print(pwmval);Serial.print(", ");
+    Serial.print(Vout); Serial.println("V)");
+  }
+
   /*
   Serial.print(out[0]); Serial.print(", ");
   Serial.print(out[1]); Serial.print(",");
