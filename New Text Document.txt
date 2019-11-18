@@ -60,4 +60,11 @@ temp 10k
 ~470
 
 
+red - P2
+blue - P1
+white - N1
+Green -  N2
+
+
+
 
